@@ -13,12 +13,12 @@ export class RecursosService {
  constructor(private http: HttpClient) { }
 
  obtenerDatos(): Observable<Foto[]> {
-   return this.http.get<{[key: string]: Foto}>(this.firebaseUrl).pipe(
+   return this.http.get<{[keywords: string]: Foto}>(this.firebaseUrl).pipe(
      map(response => {
        const fotos: Foto[] = [];
-       for (const key in response) {
-         if (response.hasOwnProperty(key)) {
-           fotos.push({...response[key], id: key});
+       for (const keywords in response) {
+         if (response.hasOwnProperty(keywords)) {
+           fotos.push({...response[keywords], id: keywords});
          }
        }
        return fotos;
